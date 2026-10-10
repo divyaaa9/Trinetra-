@@ -380,3 +380,37 @@ a.cn-cat-link { display: block; border-radius: var(--cn-radius); }
   .cn-avatar { display: none; }
   .cn-tab { padding: 8px 12px; font-size: 0.8rem; }
 }
+
+/* ---------- Assessments ---------- */
+.cn-root { --cn-danger: #A33B2E; }
+.cn-fieldset { border: 0; margin: 20px 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.cn-fieldset legend { padding: 0; margin-bottom: 14px; }
+.cn-opt {
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px; cursor: pointer;
+  border: 1.5px solid var(--cn-border); border-radius: 14px; background: var(--cn-paper);
+}
+.cn-opt:hover { border-color: var(--cn-ink); }
+.cn-opt[data-selected="true"] { border-color: var(--cn-ink); background: color-mix(in srgb, var(--cn-ink) 8%, var(--cn-paper)); }
+.cn-opt:focus-within { outline: 3px solid var(--cn-ink); outline-offset: 2px; }
+.cn-opt input { width: 18px; height: 18px; accent-color: var(--cn-ink); flex-shrink: 0; }
+.cn-split { display: grid; gap: 16px; }
+@media (min-width: 900px) { .cn-split { grid-template-columns: 1fr 1fr; align-items: start; } }
+.cn-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 16px; }
+.cn-tips { list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--cn-ink-soft); }
+.cn-root .cn-tips { list-style: disc; padding-left: 20px; }
+.cn-avatar-card { display: flex; flex-direction: column; gap: 10px; }
+.cn-avatar-svg { width: 100%; max-width: 320px; aspect-ratio: 1; margin: 0 auto; display: block; background: var(--cn-paper); border-radius: 14px; border: 1px solid var(--cn-border); }
+.cn-count { font-family: var(--cn-font-display); font-size: 1.6rem; font-weight: 600; }
+.cn-camera { position: relative; aspect-ratio: 4 / 3; border-radius: var(--cn-radius); overflow: hidden; background: var(--cn-ink); border: 5px solid var(--cn-border); }
+.cn-camera[data-state="success"] { border-color: var(--cn-success); }
+.cn-camera[data-state="fail"] { border-color: var(--cn-danger); }
+.cn-video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); display: block; }
+.cn-camera-off { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; color: var(--cn-paper); font-weight: 600; }
+.cn-camera-chip { display: flex; align-items: center; gap: 8px; margin-top: 10px; padding: 10px 14px; border-radius: 12px; min-height: 44px; font-weight: 600; font-size: 0.9rem; background: var(--cn-paper-deep); border: 1px solid var(--cn-border); }
+.cn-camera-chip[data-state="success"] { color: var(--cn-success); border-color: var(--cn-success); }
+.cn-camera-chip[data-state="fail"] { color: var(--cn-danger); border-color: var(--cn-danger); }
+.cn-status { display: flex; align-items: center; gap: 8px; font-weight: 600; margin: 8px 0; }
+.cn-status[data-ok="true"] { color: var(--cn-success); }
+.cn-result-flag { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
+.cn-result-flag[data-ok="true"] { color: var(--cn-success); }
+.cn-result-flag[data-ok="false"] { color: var(--cn-danger); }

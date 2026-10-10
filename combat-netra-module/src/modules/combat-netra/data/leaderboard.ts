@@ -1,5 +1,6 @@
 import type { LevelName } from "../types";
 import { totalWeeklyMinutes } from "./demo";
+import { getAssessmentXpSince } from "../lib/storage";
 
 /**
  * LOCAL DEMO DATA — Stage 1 only. All participants are fictional nicknames.
@@ -36,12 +37,16 @@ export const CURRENT_USER_LEAGUE: LeagueName = "Bronze";
 
 const P = (id: string, name: string, xp: number): Participant => ({ id, name, xp });
 
-const you: Participant = {
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+
+/** Single XP source for the demo user: practice minutes plus assessment XP from the last 7 days. */
+const currentUser = (): Participant => ({
   id: CURRENT_USER_ID,
   name: "You",
-  xp: totalWeeklyMinutes() * XP_PER_MINUTE,
+  xp: totalWeeklyMinutes() * XP_PER_MINUTE + getAssessmentXpSince(Date.now() - WEEK_MS),
   isCurrentUser: true,
-};
+});
+const you = currentUser();
 
 export const participantsByLeague: Record<LeagueName, Participant[]> = {
   Bronze: [
@@ -103,7 +108,7 @@ export function rankParticipants(list: Participant[]): RankedParticipant[] {
 }
 
 export const rankedLeague = (league: LeagueName) =>
-  rankParticipants(participantsByLeague[league]);
+  rankParticipants(participantsByLeague[league].map((p) => (p.id === CURRENT_USER_ID ? currentUser() : p)));
 
 /** The demo user's standing, always computed from their own league. */
 export function getUserStanding() {

@@ -4,7 +4,9 @@ import CombatLayout from "./components/CombatLayout";
 import DashboardPage from "./pages/DashboardPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import { AcademyPage, CategoryPage, LessonPage } from "./pages/AcademyPages";
-import { AchievementsPage, AssessmentsPage, ProgressPage } from "./pages/PlaceholderPages";
+import { AchievementsPage, ProgressPage } from "./pages/PlaceholderPages";
+import AssessmentsPage from "./pages/AssessmentsPage";
+import AssessmentRunPage from "./pages/AssessmentRunPage";
 
 /**
  * Netra 2 — Combat Training.
@@ -24,6 +26,7 @@ export default function CombatNetraRoutes() {
         <Route path="academy/:categoryId" element={<CategoryPage />} />
         <Route path="academy/:categoryId/lessons/:lessonId" element={<LessonPage />} />
         <Route path="assessments" element={<AssessmentsPage />} />
+        <Route path="assessments/:assessmentId" element={<AssessmentRunPage />} />
         <Route path="progress" element={<ProgressPage />} />
         <Route path="achievements" element={<AchievementsPage />} />
         <Route path="leaderboard" element={<LeaderboardPage />} />
